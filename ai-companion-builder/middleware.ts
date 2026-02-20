@@ -1,11 +1,10 @@
-cookies: {
-  get(name: string) {
-    return req.cookies.get(name)?.value;
-  },
-  set(name: string, value: string, options: any) {
-    res.cookies.set({ name, value, ...options });
-  },
-  remove(name: string, options: any) {
-    res.cookies.set({ name, value: "", ...options });
-  }
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+
+export function middleware(request: NextRequest) {
+  return NextResponse.next();
 }
+
+export const config = {
+  matcher: ["/app/:path*"],
+};
